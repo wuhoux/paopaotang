@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>talking-js 泡泡堂</title>
+</head>
+<body>
+    <script>
+        function Player (name,color){
+            this.name = name;
+            this.color = null;
+            this.partners = [];
+            this.enemies = [];
+            this.status = 'live';//标记角色当前生存状态
+        }
+        Player.prototype.die = function () {
+        // 1.标明自己挂了
+        this.status = 'die';
+        var allDead = true;
+        2.判断其他队友是否存活
+        for(var i = 0;i < this.partners.length; i++) {
+           if (this.partners[i].status === 'live'){
+               allDead = false;
+               break;
+           }
+        }
+         if (allDead) {
+             this.lose();
+             for (var i = 0; i < this.partners.length; i++) {
+                 this.partners[i].lose();
+             }
+             for (var i = 0; i < this.enemy.length; i++) {
+                 this.enemy[i].win();
+             }
+         }
+        // 3.如果队友都挂了，
+        //     输出敌人赢了，
+        //     输出自己败了
+        }
+        Player.prototype.lose = function () {
+            console.log(this.name + '输了');
+        }
+        Player.prototype.win = function () {
+            console.log(this.enemy.name + '赢了');
+        }
+        // var player = new Player('胖墩', '红');
+        // var player = new Player('蓝妹妹', '蓝');
+        // player1.enemy = Player2;
+        // player2.enemy = Player1;
+        // player1.die();
+        var playyer
+        </script>
+</body>
+</html>
